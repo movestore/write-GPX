@@ -7,9 +7,12 @@
       {
         "name": "move"
       },
-	        {
+	  {
         "name": "rgdal"
-      }
+      },
+	  {
+		"name": "adehabitatLT"
+	  }
     ]
   },
   "createsArtifacts": true,

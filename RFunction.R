@@ -1,5 +1,6 @@
 library('move')
 library('rgdal')
+library('adehabitatLT')
 
 rFunction <- function(data,grid,typ)
 {
