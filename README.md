@@ -20,8 +20,8 @@ moveStack in Movebank format
 ### Artefacts
 `data.gpx`: GPX file of your input data with major elements "longitude", "latitude", "time" and "name" and additional data attributes as "extensions". See above for restriction of names.
 
-### Parameters 
-no parameters
+### Settings 
+no settings
 
 ### Null or error handling:
 **Data:** The full input data set is returned for further use in a next App and cannot be empty.
