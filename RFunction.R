@@ -1,34 +1,33 @@
-library('move')
-library('rgdal')
-library('adehabitatLT')
+library(move2)
+library(sf)
 
-rFunction <- function(data,grid,typ)
-{
-  Sys.setenv(tz="UTC")
+
+rFunction <- function(data) {
   
-  data_ltraj <- as(data,"ltraj")
-  data_spdf <- ltraj2spdf(data_ltraj)
-  data_ade <-move2ade(data)
-  names(data_ade) <- "name"
+  if (is.null(data) || nrow(data) == 0) {
+    logger.info("Input is NULL or has 0 rows — returning NULL.")
+    return(NULL)
+  }
   
-  data_baba <- data_ade
-  data_baba@data <- cbind(data_baba@data,data_spdf@data)
+  # if (st_crs(data)$epsg != 4326) {
+  #   data <- st_transform(data, 4326)
+  # }
+  if (!sf::st_is_longlat(data)) data <- sf::st_transform(data, 4326)
+
+  data$name <- as.character(mt_track_id(data))
+  data$time <- mt_time(data)
   
-  names(data_baba)[names(data_baba)=="timestamp"] <- "TIME"
+  data_gpx <- data[!st_is_empty(data), ] 
   
-  writeOGR(data_baba,dsn= paste0(Sys.getenv(x = "APP_ARTIFACTS_DIR", "/tmp/"),"data.gpx"),layer="moveapps locations",driver="GPX",dataset_options="GPX_USE_EXTENSIONS=yes") 
+  sf::st_write(data_gpx, dsn=appArtifactPath("GPX_data.gpx"), driver = "GPX", delete_dsn = TRUE, dataset_options = "GPX_USE_EXTENSIONS=YES", quiet = TRUE )
   
-  result <- data
-  return(result)
+  return(data)
 }
 
-  
-  
-  
-  
-  
-  
-  
+
+#st_layers("data/output/GPX_data.gpx")
+#gpx <- st_read("data/output/GPX_data.gpx", layer = "waypoints")
+#gpx
   
   
   

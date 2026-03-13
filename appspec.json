@@ -1,18 +1,17 @@
 {
+  "version": "1.2",
   "settings": [
    
   ],
   "dependencies": {
     "R": [
       {
-        "name": "move"
+        "name": "move2"
       },
 	  {
-        "name": "rgdal"
-      },
-	  {
-		"name": "adehabitatLT"
-	  }
+        "name": "sf"
+      }
+	  
     ]
   },
   "createsArtifacts": true,
@@ -37,9 +36,16 @@
       "orcid": "0000-0003-0193-1563",
       "affiliation": "Max-Planck-Institute of Animal Behavior",
       "affiliationRor": "https://ror.org/026stee22"
+    },
+    {
+      "firstName": "Nafiseh",
+      "middleInitials": null,
+      "lastName": "Tavakol",
+      "email": "ntavakol@ab.mpg.de",
+      "roles": ["contributor"],
+      "orcid": "0000-0003-3674-4784",
+      "affiliation": "Max-Planck-Institute of Animal Behavior",
+      "affiliationRor": "https://ror.org/026stee22"
     }
-  ],
-  "documentation": {
-    "url": "https://github.com/movestore/write-GPX/blob/main/README.md"
-  }
+  ]
 }
